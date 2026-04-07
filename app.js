@@ -10,13 +10,11 @@ app.set('views', path.join(__dirname, 'views'));
 const homeRoutes = require('./routes/home');
 const aboutRoutes = require('./routes/home');
 const contactRoutes = require('./routes/home');
-const loginRoutes = require('./routes/home');
 
 // Use routes
 app.use('/', homeRoutes);
 app.use('/about-us', aboutRoutes);
 app.use('/contact-us', contactRoutes);
-app.use('/login', loginRoutes);
 
 // Start server
 const PORT = 3000;
