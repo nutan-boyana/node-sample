@@ -15,5 +15,7 @@ router.get('/contact-us', homeController.getContactUs);
 // Route to display login page
 router.get('/login', loginController.getLogin);
 
+// Route to handle login POST
+router.post('/login', loginController.postLogin);
 
 module.exports = router;

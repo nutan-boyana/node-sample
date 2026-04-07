@@ -6,20 +6,17 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
+
 // Routes
 const homeRoutes = require('./routes/home');
-const aboutRoutes = require('./routes/home');
-const contactRoutes = require('./routes/home');
-const loginRoutes = require('./routes/home');
 
 // Use routes
 app.use('/', homeRoutes);
-app.use('/about-us', aboutRoutes);
-app.use('/contact-us', contactRoutes);
-app.use('/login', loginRoutes);
 
 // Start server
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
