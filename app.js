@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const homeRoutes = require('./routes/home');
 const app = express();
 
 // Set view engine
@@ -13,14 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-const homeRoutes = require('./routes/home');
-
 // Use routes
 app.use('/', homeRoutes);
 
 // Start server
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
