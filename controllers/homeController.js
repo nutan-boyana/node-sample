@@ -12,3 +12,18 @@ exports.getAboutUs = (req, res) => {
 exports.getContactUs = (req, res) => {
   res.render('contact', { title: 'Contact Us' });
 };
+
+// Controller for Users page
+exports.getUsers = (req, res) => {
+  const connection = require('../db');
+  const query = 'SELECT id, email FROM users';
+  
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching users:', error);
+      return res.render('users', { users: [], title: 'Users', error: 'Error fetching users' });
+    }
+    
+    res.render('users', { users: results, title: 'Users', error: null });
+  });
+};

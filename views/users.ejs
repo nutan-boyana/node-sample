@@ -1,0 +1,36 @@
+<%- include('includes/header') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2><%= title %></h2>
+      
+      <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+      
+      <% if (users && users.length > 0) { %>
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(user => { %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <div class="alert alert-info">No users found.</div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>
